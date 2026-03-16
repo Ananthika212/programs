@@ -1,0 +1,34 @@
+class Solution {
+    public int countPrimes(int n) {
+        int count=0;
+        int i;
+        boolean [] ar=new boolean[n+1];
+     
+        if(n<=2)
+        {
+            return 0;
+        }
+        for(i=0;i<=n;i++)
+        {
+            ar[i]=true;
+        }
+        for(i=2;i*i<=n;i++)
+        {
+            if(ar[i])
+            {
+                for(int j=2;i*j<n;j++)
+                {
+                    ar[i*j]=false;
+                }
+            }
+        }
+        for(i=3;i<=n;i++)
+        {
+            if (ar[i])
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+}
